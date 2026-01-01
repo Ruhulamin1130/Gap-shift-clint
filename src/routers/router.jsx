@@ -8,6 +8,11 @@ import Coverage from "../Pages/Coverage/Coverage";
 import PrivateRouter from "./PrivateRouter";
 import Rider from "../Pages/Rider/Rider";
 import AddPersel from "../Pages/AddPersel/AddPersel";
+import DashbordLayout from "../Layout/Dashbord/DashbordLayout";
+import Mypercels from "../Pages/dashbord/Mypercels";
+import Payment from "../Pages/dashbord/payment/Payment";
+import PaymentSuccess from "../Pages/dashbord/payment/PaymentSuccess";
+import PaymentCancled from "../Pages/dashbord/payment/PaymentCancled";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +58,32 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRouter>
+        <DashbordLayout></DashbordLayout>
+      </PrivateRouter>
+    ),
+    children: [
+      {
+        path: "my-percels",
+        Component: Mypercels,
+      },
+      {
+        path: "payment/:percelId",
+        Component: Payment,
+      },
+      {
+        path: "payment-success",
+        Component: PaymentSuccess,
+      },
+      {
+        path: "payment-cancled",
+        Component: PaymentCancled,
       },
     ],
   },
